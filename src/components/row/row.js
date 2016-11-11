@@ -7,8 +7,8 @@ class Row extends Component {
     return (
             <li id="row-element">
                 <img role="presentation" src={logo} />
-                <h3>Title</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent euismod ultrices ante, ac laoreet nulla vestibulum adipiscing. Nam quis justo in augue auctor imperdiet.</p>
+                <h3>{this.props.titleProp}</h3>
+                <p>{this.props.descProp}</p>
             </li>
     );
   }

@@ -5,15 +5,22 @@ import Card from './../../components/card/card';
 
 class Grid extends Component {
   render() {
+    var storage = localStorage.getItem('storage');
+    var indents = [];
+    if(storage){
+        var cards = JSON.parse(storage).cards;
+        cards.forEach((e) => {
+            indents.push(<Card titleProp={e.title} descProp={e.description} />);
+        });
+    }else{
+        indents.push(<h1>NO POSTS YET, HIT THE CREATE BUTTON</h1>);
+    }
+    
     return (
         <div id="container">
             <div id="wrapper">
                 <div id="columns">
-                    <Card />
-                    <Card /> 
-                    <Card />
-                    <Card />
-                    <Card />
+                    {indents}
                 </div>
             </div>
         </div>

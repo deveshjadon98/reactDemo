@@ -7,13 +7,8 @@ class Card extends Component {
     return (
                 <div className="pin">
                     <img role="presentation" src={logo} />
-                    <h1>Title</h1>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                        Sed feugiat consectetur pellentesque. Nam ac elit risus, 
-                        ac blandit dui. Duis rutrum porta tortor ut convallis.
-                        Duis rutrum porta tortor ut convallis.
-                    </p>
+                    <h1>{this.props.titleProp}</h1>
+                    <p>{this.props.descProp}</p>
                 </div>
     );
   }

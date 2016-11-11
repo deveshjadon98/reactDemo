@@ -4,15 +4,18 @@ import Row from './../../components/row/row';
 
 class List extends Component {
   render() {
+    var storage = localStorage.getItem('storage');
+    var indents = [];
+    if(storage){
+        var cards = JSON.parse(storage).cards;
+        cards.forEach((e) => {
+            indents.push(<Row titleProp={e.title} descProp={e.description} />);
+        });
+    }
     return (
         <div>
             <ul id="list">
-                <Row/>
-                <Row/>
-                <Row/>
-                <Row/>
-                <Row/>
-                <Row/>
+                {indents}
             </ul>
         </div>
     );
