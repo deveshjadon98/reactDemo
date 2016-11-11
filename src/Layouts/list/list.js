@@ -9,8 +9,11 @@ class List extends Component {
     if(storage){
         var cards = JSON.parse(storage).cards;
         cards.forEach((e) => {
-            indents.push(<Row titleProp={e.title} descProp={e.description} />);
+            if(e.status === "active")
+                indents.push(<Row idProp={e.id} titleProp={e.title} descProp={e.description} />);
         });
+    }else{
+        indents.push(<h1>NO POSTS YET, HIT THE CREATE BUTTON</h1>);
     }
     return (
         <div>

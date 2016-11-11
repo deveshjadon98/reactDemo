@@ -25,9 +25,9 @@ class Create extends Component {
     if(localStorage.getItem('storage')){
       storage = JSON.parse(localStorage.getItem('storage'));
       id = storage.cards.length + 1;
-      storage.cards.push({"id":id,"title": this.state.title,"description": this.state.description});    
+      storage.cards.push({"id":id,"title": this.state.title,"description": this.state.description,"status":"active"});    
     }else{
-      var card = [{ id:id,title: this.state.title,description: this.state.description }];
+      var card = [{ id:id,title: this.state.title,description: this.state.description,"status":"active"}];
       storage = { 'cards': card };
     }
     localStorage.setItem('storage',JSON.stringify(storage));
