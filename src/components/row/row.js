@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from './../../../assets/images/default.png';
+import {Link} from 'react-router';
 import './row.css';
 
 class Row extends Component {
@@ -32,7 +33,7 @@ class Row extends Component {
                 <img role="presentation" src={logo} />
                 <h3>{this.props.titleProp}</h3>
                 <p>{this.props.descProp}</p>
-                <button>Update</button>
+                <Link to={'/update/'+this.state.id }>Update</Link>
                 <button onClick={this.handleDelete}>Delete</button>
             </li>
     );
