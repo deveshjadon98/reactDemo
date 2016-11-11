@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import logo from './../../../assets/images/logo.jpg';
 import './header.css';
-import App from './../../App';
-
 
 class Header extends Component {
 
@@ -13,8 +11,8 @@ class Header extends Component {
                     <img className="logo" role="presentation" src={logo} /> 
                     <ul>
                         <li><button>Create</button></li>
-                        <li><button onPress={App.onGridPress}>Grid</button></li>
-                        <li><button onPress={App.onListPress}>List</button></li>
+                        <li><button onClick={this.props.gridStateProp}>Grid</button></li>
+                        <li><button onClick={this.props.listStateProp}>List</button></li>
                     </ul>
                 </div>
             </div>

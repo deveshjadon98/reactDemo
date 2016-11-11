@@ -9,24 +9,26 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = { grid : true };
+    this.updateStateToGrid = this.updateStateToGrid.bind(this);
+    this.updateStateToList = this.updateStateToList.bind(this);
   }
 
-  onGridPress(){
-      App.setState({
-          grid: true
-          });
-  };
+  updateStateToGrid(){
+      // console.log("before grid", this.state.grid);
+      this.setState({ grid: true });
+      // console.log("After grid", this.state.grid);
+  }
 
-  onListPress(){
-      App.setState({
-          grid:false
-          });
-  };
+  updateStateToList(){
+      // console.log("before list", this.state.grid);
+      this.setState({ grid:false });
+      // console.log("after list", this.state.grid);
+  }
 
   render() {
     return (
       <div className="App">
-        <Header />
+        <Header myDataProp={this.state.grid} gridStateProp={ this.updateStateToGrid } listStateProp={ this.updateStateToList } />
         { this.state.grid ? <Grid/> : <List /> }
       </div>
     );
