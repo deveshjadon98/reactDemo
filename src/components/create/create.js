@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './create.css';
 
-class CreateForm extends Component {
+class Create extends Component {
   constructor(props) {
     super(props);
     this.state = {title: '',description:''};
@@ -31,7 +31,7 @@ class CreateForm extends Component {
       storage = { 'cards': card };
     }
     localStorage.setItem('storage',JSON.stringify(storage));
-
+    // this.history.pushState(null, 'home');
     console.log("localStorage",localStorage.getItem('storage'));
     // alert('A name was submitted: ' + this.state.title + this.state.description);
     event.preventDefault();
@@ -53,4 +53,4 @@ class CreateForm extends Component {
   }
 }
 
-export default CreateForm;
+export default Create;

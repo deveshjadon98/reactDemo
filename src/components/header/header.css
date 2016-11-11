@@ -34,7 +34,7 @@
   display: inline;
 }
 
-.App-header li button {
+.App-header li button, .App-header li a {
   color: white;
   background-color: #000;
   border:none;
