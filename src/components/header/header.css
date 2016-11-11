@@ -1,0 +1,47 @@
+.App-header {
+  background-color: #000;
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
+  display:inline-block;
+  vertical-align:top;
+  width:100%;
+}
+
+#header-container {
+  width: 100%;
+  margin: 0 auto;
+  height: 40px;
+}
+
+.logo {
+  float: left;
+}
+
+.App-header ul {
+  padding: 0px;
+  margin: 0px;
+  float:right;
+  text-align: center;
+}
+
+.App-header li {
+  list-style-type: none;
+  padding: 0px;
+  height: 24px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  display: inline;
+}
+
+.App-header li button {
+  color: white;
+  background-color: #000;
+  border:none;
+  font-size: 16px;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  line-height: 70px;
+  padding: 5px 15px;
+  opacity: 0.7;
+}
