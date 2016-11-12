@@ -13,6 +13,7 @@ class Home extends Component {
     this.updateStateToGrid = this.updateStateToGrid.bind(this);
     this.updateStateToList = this.updateStateToList.bind(this);
     this.updateStateSearchResult = this.updateStateSearchResult.bind(this);
+    this.deleteCardFromResult = this.deleteCardFromResult.bind(this);
   }
 
   componentWillMount(){
@@ -22,6 +23,11 @@ class Home extends Component {
       var cards = JSON.parse(localStorage.getItem("storage")).cards;
       this.setState({ searchResult : cards });
     }
+  }
+
+  deleteCardFromResult(id){
+      var cards = JSON.parse(localStorage.getItem("storage")).cards;
+      this.setState({ searchResult : cards });
   }
 
   updateStateSearchResult(){
@@ -42,7 +48,7 @@ class Home extends Component {
       <div>
         <Header myDataProp={this.state.grid} gridStateProp={ this.updateStateToGrid } listStateProp={ this.updateStateToList } />
         { this.state.isStorageSet ? <Search searchResultStateProp={ this.updateStateSearchResult }/> : '' }
-        { this.state.grid ? <Grid searchResult={this.state.searchResult} isSearch={this.state.isSearch}/> : <List searchResult={this.state.searchResult} isSearch={this.state.isSearch}/> }
+        { this.state.grid ? <Grid deleteCard={this.deleteCardFromResult} searchResult={this.state.searchResult} isSearch={this.state.isSearch}/> : <List deleteCard={this.deleteCardFromResult} searchResult={this.state.searchResult} isSearch={this.state.isSearch}/> }
       </div>
     );
   }

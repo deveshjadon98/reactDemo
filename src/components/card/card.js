@@ -15,7 +15,6 @@ class Card extends Component {
     if(storage){
       storage = JSON.parse(storage);
       var cards = storage.cards;
-      console.log("localStorage before",localStorage.getItem('storage'));
       for(var i=0; i<cards.length; i++)
       {
         if(cards[i].id === this.state.id)
@@ -23,8 +22,7 @@ class Card extends Component {
       }
       storage.cards = cards;
       localStorage.setItem('storage',JSON.stringify(storage));
-      // browserHistory.push('/home');
-      console.log("localStorage after",localStorage.getItem('storage'));
+      this.props.deleteCard(this.state.id);
     }
   }
 
@@ -34,7 +32,7 @@ class Card extends Component {
                     <img role="presentation" src={logo} />
                     <h1>{this.props.titleProp}</h1>
                     <p>{this.props.descProp}</p>
-                    <Link to={'/update/'+this.state.id }>Update</Link>
+                    <Link to={'/update/'+this.props.idProp }>Update</Link>
                     <button onClick={this.handleDelete}>Delete</button>
                 </div>
     );

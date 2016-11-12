@@ -15,7 +15,6 @@ class Row extends Component {
     if(storage){
       storage = JSON.parse(storage);
       var cards = storage.cards;
-      console.log("localStorage before",localStorage.getItem('storage'));
       for(var i=0; i<cards.length; i++)
       {
         if(cards[i].id === this.state.id)
@@ -23,7 +22,7 @@ class Row extends Component {
       }
       storage.cards = cards;
       localStorage.setItem('storage',JSON.stringify(storage));
-      console.log("localStorage after",localStorage.getItem('storage'));
+      this.props.deleteCard(this.state.id);
     }
   }
 

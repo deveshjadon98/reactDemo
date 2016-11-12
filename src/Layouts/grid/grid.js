@@ -5,6 +5,11 @@ import Card from './../../components/card/card';
 class Grid extends Component {
     constructor(props) {
         super(props);
+        this.deleteCardFromResult = this.deleteCardFromResult.bind(this);
+    }
+
+    deleteCardFromResult(id){
+        this.props.deleteCard(id);
     }
 
     render() {
@@ -12,7 +17,7 @@ class Grid extends Component {
         if(this.props.searchResult != ""){
             this.props.searchResult.forEach((e) => {
                 if(e.status === "active")
-                    indents.push(<Card idProp={e.id} titleProp={e.title} descProp={e.description} />);
+                    indents.push(<Card idProp={e.id} titleProp={e.title} descProp={e.description} deleteCard={ this.deleteCardFromResult } />);
             });
         }else{
             indents.push(<h1>NO POSTS.</h1>);
