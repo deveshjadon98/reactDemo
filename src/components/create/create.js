@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router';
+import {Link,browserHistory} from 'react-router';
 import './create.css';
 
 class Create extends Component {
@@ -33,6 +33,7 @@ class Create extends Component {
     }
     localStorage.setItem('storage',JSON.stringify(storage));
     // this.history.pushState(null, 'home');
+    browserHistory.push('/home');
     console.log("localStorage",localStorage.getItem('storage'));
     // alert('A name was submitted: ' + this.state.title + this.state.description);
     event.preventDefault();
@@ -45,9 +46,9 @@ class Create extends Component {
         <li><Link to="/home">Home</Link></li>
         <form onSubmit={this.handleSubmit}>
           <label for="title">Title</label>
-          <input type="text" id="title" value={this.state.title} onChange={this.handleTitle} />
+          <input type="text" id="title" required value={this.state.title} onChange={this.handleTitle} />
           <label for="description">Description</label>
-          <textarea id="description" value={this.state.description} onChange={this.handleDescription} />
+          <textarea id="description" required value={this.state.description} onChange={this.handleDescription} />
           <input type="submit" id="formSubmit" value="Submit" />
         </form>
       </div>

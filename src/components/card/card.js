@@ -23,6 +23,7 @@ class Card extends Component {
       }
       storage.cards = cards;
       localStorage.setItem('storage',JSON.stringify(storage));
+      // browserHistory.push('/home');
       console.log("localStorage after",localStorage.getItem('storage'));
     }
   }
