@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './home.css';
 import Header from './../header/header'
+import Search from './../search/search';
 import Grid from './../../Layouts/grid/grid';
 import List from './../../Layouts/list/list';
 class Home extends Component {
@@ -8,28 +9,40 @@ class Home extends Component {
   
   constructor(props) {
     super(props);
-    this.state = { grid : true };
+    this.state = { grid:true, isStorageSet:false, searchResult:'', isSearch:false };
     this.updateStateToGrid = this.updateStateToGrid.bind(this);
     this.updateStateToList = this.updateStateToList.bind(this);
+    this.updateStateSearchResult = this.updateStateSearchResult.bind(this);
+  }
+
+  componentWillMount(){
+    localStorage.removeItem("searchResult")
+    if(JSON.parse(localStorage.getItem('storage'))){
+      this.setState({ isStorageSet: true });
+      var cards = JSON.parse(localStorage.getItem("storage")).cards;
+      this.setState({ searchResult : cards });
+    }
+  }
+
+  updateStateSearchResult(){
+    var cards = JSON.parse(localStorage.getItem("searchResult"));
+    this.setState({ searchResult : cards,isSearch:true });
   }
 
   updateStateToGrid(){
-      // console.log("before grid", this.state.grid);
       this.setState({ grid: true });
-      // console.log("After grid", this.state.grid);
   }
 
   updateStateToList(){
-      // console.log("before list", this.state.grid);
       this.setState({ grid:false });
-      // console.log("after list", this.state.grid);
   }
 
   render() {
     return (
       <div>
         <Header myDataProp={this.state.grid} gridStateProp={ this.updateStateToGrid } listStateProp={ this.updateStateToList } />
-        { this.state.grid ? <Grid/> : <List /> }
+        { this.state.isStorageSet ? <Search searchResultStateProp={ this.updateStateSearchResult }/> : '' }
+        { this.state.grid ? <Grid searchResult={this.state.searchResult} isSearch={this.state.isSearch}/> : <List searchResult={this.state.searchResult} isSearch={this.state.isSearch}/> }
       </div>
     );
   }
