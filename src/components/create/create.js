@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router';
 import './create.css';
 
 class Create extends Component {
@@ -41,6 +42,7 @@ class Create extends Component {
     return (
       <div className="formContainer">
         <h3>Create Post</h3>
+        <li><Link to="/home">Home</Link></li>
         <form onSubmit={this.handleSubmit}>
           <label for="title">Title</label>
           <input type="text" id="title" value={this.state.title} onChange={this.handleTitle} />

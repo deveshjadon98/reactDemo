@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './update.css';
+import {Link} from 'react-router';
 
 class Update extends Component {
   constructor(props) {
@@ -46,6 +47,7 @@ class Update extends Component {
     return (
       <div className="formContainer">
         <h3>Update</h3>
+        <li><Link to="/home">Home</Link></li>
         <form onSubmit={this.handleSubmit}>
           <label for="title">Title</label>
           <input type="text" id="title" value={this.state.title} onChange={this.handleTitle} />
