@@ -6,6 +6,13 @@ class Update extends Component {
   constructor(props) {
     super(props);
     this.state = {id:this.props.params.id,title:'',description:''};
+    // var storage = JSON.parse(localStorage.getItem('storage'));
+    // var cards = storage.cards;
+    // cards.forEach((e) => {
+    //         if(e.id == this.props.params.id){
+    //             this.setState({title: e.title,description:e.description});
+    //         }
+    //     });
     this.handleTitle = this.handleTitle.bind(this);
     this.handleDescription = this.handleDescription.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,28 +29,17 @@ class Update extends Component {
   handleSubmit(event) {
     var storage = JSON.parse(localStorage.getItem('storage'));
     var cards = storage.cards;
-    cards.forEach((e) => {
-            if(e.id === this.state.id)
-                e.title = this.state.title;
-        });
+    for(var i=0; i<cards.length; i++){
+        if(cards[i].id == this.props.params.id){
+            cards[i].title = this.state.title;
+        }
+    }
     storage.cards = cards;
     localStorage.setItem('storage',JSON.stringify(storage));
-    // this.history.pushState(null, 'home');
-    console.log("localStorage",localStorage.getItem('storage'));
-    // alert('A name was submitted: ' + this.state.title + this.state.description);
     event.preventDefault();
   }
 
   render() {
-    var storage = JSON.parse(localStorage.getItem('storage'));
-    var cards = storage.cards;
-    
-    cards.forEach((e) => {
-            if(e.id === this.props.params.id){
-                this.setState({title: e.title,description:e.description});
-            }
-        });
-    console.log('props form link',this.props.params.id);
     return (
       <div className="formContainer">
         <h3>Update</h3>
